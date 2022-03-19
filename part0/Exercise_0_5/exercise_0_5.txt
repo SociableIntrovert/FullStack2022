@@ -1,0 +1,46 @@
+title Exercise 0.5
+
+participant client
+participant server
+
+client->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+note right of server
+Client requests the spa page
+end note 
+
+server->client: HTML returned to client
+note left of client
+Client recieves HTML and starts parsing it
+end note
+
+client->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+note right of server 
+Client requests main.css linked in head section
+end note 
+
+server->client:main.css returned to client
+note left of client 
+Client receives main.css
+end note 
+
+client->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+note right of server
+Client requests spa.js mentioned in script tag in head section
+end note
+
+server->client: spa.js returned to client
+note left of client
+Client receives spa.js and executes it
+end note 
+
+client->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+note right of server
+Client requests data.json made from AJAX call in spa.js
+end note 
+
+server->client: data.json returned to client
+note left of client
+Once data.json is available to client, 
+AJAX call finishes with inserting array of note
+objects into page
+end note 
