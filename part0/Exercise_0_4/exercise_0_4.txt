@@ -1,0 +1,39 @@
+title Exercise 0.4
+
+participant client
+participant server
+client->server:HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note right of server
+Text input is passed to new_note script.
+end note
+client->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/new_note
+note right of server
+notes page requested from server.
+end note
+server->client:HTML returned to client
+note left of client
+Browser starts parsing HTML.
+end note
+client->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+note right of server
+Request is made for css file linked in header.
+end note
+server->client:main.css returned to client
+note left of client 
+Browser receives main.css.
+end note 
+client->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+note right of server
+Request is made for js file in script tag in header.
+end note 
+server->client: main.js is returned to client
+note left of client 
+Browser receives main.js file. Script is executed.
+end note 
+client->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+note right of server
+AJAX request made from script to retrieve data.json.
+end note
+server->client: data.json is returned to client
+note left of client 
+One json is received, the script inserts the data into HTML page.
