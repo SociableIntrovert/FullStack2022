@@ -1,0 +1,17 @@
+title Exercise 0.6
+
+participant client
+participant server
+
+client->client:spa.js executed on submit
+note left of client
+New note added to client side array of notes.
+Notes removed from page and readded to unordered list
+including new note 
+end note 
+
+client->server:HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note right of server
+AJAX request made passing new note text 
+to server side new_note_spa script
+to be added to data.json
