@@ -5,54 +5,50 @@ const Header = (props) => {
 }
 
 const Part = (props) => {
-  console.log(props);
   return (
     <p>{props.name} {props.count}</p>
   )
 }
 
 const Content = (props) => {
+  //const splitParts = props.parts.map(partObj => "name='" + partObj.name + "' count=" + partObj.exercises);
+  //console.log(splitParts);
   return (
     <>
-      <Part 
-        name={props.part1.name}
-        count={props.part1.exercises}
-      />
-      <Part 
-        name={props.part2.name}
-        count={props.part2.exercises}
-      />
-      <Part 
-        name={props.part3.name}
-        count={props.part3.exercises}
-      />
+      <Part name={props.parts[0].name} count={props.parts[0].exercises}/>
+      <Part name={props.parts[1].name} count={props.parts[1].exercises}/>
+      <Part name={props.parts[2].name} count={props.parts[2].exercises}/>
     </>
   )
 }
 
 const Total = (props) => {
+  let totalExercises = 0;
+  props.parts.forEach(part => {
+    totalExercises += part.exercises;
+  });
   return (
-    <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
+    <p>Number of exercises {totalExercises}</p>
   )
 }
 
 const App = () => {
-  const course = 'Half Stack Application Development'
+  const course = 'Half Stack Application Development';
 
-  const part1 = {
-    name: 'Fundamentals of React',
-    exeercises: 10
-  }
-
-  const part2 = {
-    name: 'Using props to Pass Data',
-    exercises: 7
-  }
-
-  const part3 = {
-    name: 'State of a Component',
-    exercises: 14
-  }
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to Pass Data',
+      exercises: 7
+    },
+    {
+      name: 'State of a Component',
+      exercises: 14
+    }
+  ]
 
   return (
     <div>
@@ -60,14 +56,10 @@ const App = () => {
         course={course}
       />
       <Content 
-        part1={part1}
-        part2={part2}
-        part3={part3}
+        parts={parts}
       />
       <Total 
-        exercises1={part1.exeercises}
-        exercises2={part2.exercises}
-        exercises3={part3.exercises}
+        parts={parts}
       />
     </div>  
   )
